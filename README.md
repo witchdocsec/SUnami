@@ -6,11 +6,11 @@
  This does mean you will need to wait for sudo to be executed.
  
 
-#File Exfiltration
+# File Exfiltration
 I used passwd so as not to leak my hash for this demo but rest assured you can read whatever file you wish
 ![image](https://github.com/witchdocsec/SUnami/assets/107813117/a7f26322-5fca-4030-9725-13dc5a02ac44)
 
-#Root Shell
+# Root Shell
 ![image](https://github.com/witchdocsec/SUnami/assets/107813117/06000a59-b7da-45f3-8258-89618aa02a1f)
 
   

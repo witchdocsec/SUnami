@@ -8,7 +8,7 @@
  the -local flag denotes that you want sunami to modify the .bashrc file on the current machine instead of producing output (not suggested for stealth reasons).
  
  # Notice
- using the shells and socket based exfil will throw an error in the targets shell if your listener isn't active. be sure to clean up after gaining root. For the most stealth will file exfil we suggest the built in flask server.
+ using the shells and socket based exfil will throw an error in the targets shell if your listener isn't active. be sure to clean up after gaining root. For the most stealth with file exfil we suggest the built in flask server.
  
 
 # File Exfiltration

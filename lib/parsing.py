@@ -1,4 +1,5 @@
 import argparse
+#may need to swap flags
 def parser():
 	parser=argparse.ArgumentParser(description="sunami argument parser")
 	parser.add_argument("-local", choices=["1","0"], default="0")
@@ -16,5 +17,12 @@ def parser():
 	exfilfileparser.add_argument("--method", choices=["postflask","nc","pysocket"])
 	exfilfileparser.add_argument("--ip")
 	exfilfileparser.add_argument("--port")
+
+	rfsparser=subparse.add_parser("rfs")
+	rfsparser.add_argument("--ip", required=True)
+	rfsparser.add_argument("--port", required=True)
+	rfsparser.add_argument("--file", required=True)
+	rfsparser.add_argument("--vars",nargs="+")
+	rfsparser.add_argument("--schema", default="http")
 	args = parser.parse_args()
 	return args

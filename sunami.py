@@ -92,7 +92,10 @@ if args.command == "rfs":
 	app = Flask(__name__)
 	@app.route("/rfs",methods=["GET"])
 	def rfs(rfvs=args.vars):
-		rfsvars={v.split(":",1)[0]:v.split(":",1)[1] for v in rfvs}
+		if rfvs:
+			rfsvars={v.split(":",1)[0]:v.split(":",1)[1] for v in rfvs}
+		else:
+			rfsvars=""
 		return render_template(os.path.join("rfs",args.file),rfsvars=rfsvars)
 	@app.route("/l",methods=["POST"])
 	def listen():

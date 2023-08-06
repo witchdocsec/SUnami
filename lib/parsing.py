@@ -8,7 +8,8 @@ def parser():
 	genshellparser=subparse.add_parser("genshell")
 	genshellparser.add_argument("--ip")
 	genshellparser.add_argument("--port")
-	genshellparser.add_argument("-shell", default="/bin/bash")
+	genshellparser.add_argument("--shelltype", default="rev")
+	genshellparser.add_argument("--shell", default="bash")
 	genshellparser.add_argument("-protocol", default="tcp")
 	genshellparser.add_argument("-listen", choices=["1","0"], default="0")
 

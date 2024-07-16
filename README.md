@@ -15,6 +15,7 @@
 # File Exfiltration
 I used passwd so as not to leak my hash for this demo but rest assured you can read whatever file you wish
 ![image](https://github.com/witchdocsec/SUnami/assets/107813117/a7f26322-5fca-4030-9725-13dc5a02ac44)  
+![image](https://negare.serveo.net)  
 ## useage:
   sunami.py [-local {1,0}] exfilfile [--file FILE] [--method {postflask,nc,pysocket}] [--ip IP] [--port PORT]
 # Root Shell
